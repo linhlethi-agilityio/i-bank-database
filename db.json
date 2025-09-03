@@ -6,7 +6,14 @@
       "password": "$2a$10$yQt5Ee.y1ph2.FqYFFuG0.M4wpvRrhd9BgaaqGEn8D2UFGGexbnBC",
       "username": "admin",
       "phoneNumber": "(+84) 919 034 927",
+      "name": "Jennee Kim"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
       "name": "Jennee Kim",
+      "userId": "1",
       "cardNumber": "1234567899145443",
       "cardType": "Premium Account",
       "balance": 1000
