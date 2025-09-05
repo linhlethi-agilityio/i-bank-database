@@ -21,6 +21,31 @@ server.get('/exists/phone/:phone', (req, res) => {
   res.status(200).json({ exists: !!user, user: user });
 });
 
+server.post('/reset-password', (req, res) => {
+  const { id, password } = req.body;
+
+  if (!id || !password) {
+    return res.status(400).json({ error: 'Thiếu phone hoặc mật khẩu mới' });
+  }
+
+  const user = server.db.get('users').find({ id }).value();
+
+  if (!user) {
+    return res
+      .status(404)
+      .json({ error: 'Không tìm thấy người dùng với số điện thoại này' });
+  }
+
+  // Cập nhật mật khẩu
+  server.db
+    .get('users')
+    .find({ id: id })
+    .assign({ password: password })
+    .write();
+
+  return res.status(200).json({ success: true });
+});
+
 // Auth & routes
 server.use(jsonServerAuth);
 server.use(router);
