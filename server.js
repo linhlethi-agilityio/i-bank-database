@@ -18,7 +18,7 @@ server.use(rules);
 server.get('/exists/phone/:phone', (req, res) => {
   const phone = req.params.phone;
   const user = server.db.get('users').find({ phone }).value();
-  res.status(200).json({ exists: !!user });
+  res.status(200).json({ exists: !!user, user: user });
 });
 
 // Auth & routes
