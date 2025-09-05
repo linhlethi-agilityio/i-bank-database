@@ -4,6 +4,7 @@ const jsonServerAuth = require('json-server-auth');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
+const bcrypt = require('bcryptjs');
 
 server.use(middlewares);
 server.db = router.db;
@@ -23,7 +24,7 @@ server.get('/exists/phone/:phone', (req, res) => {
 
 server.use(jsonServer.bodyParser);
 
-server.post('/reset-password', (req, res) => {
+server.post('/reset-password', async (req, res) => {
   const { id, password } = req.body;
 
   if (!id || !password) {
@@ -37,7 +38,13 @@ server.post('/reset-password', (req, res) => {
     return res.status(404).json({ error: 'User not found' });
   }
 
-  server.db.get('users').find({ id: userId }).assign({ password }).write();
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  server.db
+    .get('users')
+    .find({ id: userId })
+    .assign({ password: hashedPassword })
+    .write();
 
   return res.status(200).json({ success: true });
 });
