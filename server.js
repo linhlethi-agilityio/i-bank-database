@@ -21,24 +21,27 @@ server.get('/exists/phone/:phone', (req, res) => {
   res.status(200).json({ exists: !!user, user: user });
 });
 
+server.use(jsonServer.bodyParser);
+
 server.post('/reset-password', (req, res) => {
   const { id, password } = req.body;
 
   if (!id || !password) {
-    return res.status(400).json({ error: 'Thiếu id hoặc mật khẩu mới' });
+    return res.status(400).json({ error: 'Missing id or new password' });
   }
 
   const userId = Number(id);
   const user = server.db.get('users').find({ id: userId }).value();
 
   if (!user) {
-    return res.status(404).json({ error: 'Không tìm thấy người dùng' });
+    return res.status(404).json({ error: 'User not found' });
   }
 
   server.db.get('users').find({ id: userId }).assign({ password }).write();
 
   return res.status(200).json({ success: true });
 });
+
 // Auth & routes
 server.use(jsonServerAuth);
 server.use(router);
