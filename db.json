@@ -22,6 +22,7 @@
   "transactions": [
     {
       "id": 1,
+      "cardId": 1,
       "status": "successfully",
       "amount": -10,
       "type": "water bill",
@@ -29,6 +30,7 @@
     },
     {
       "id": 2,
+      "cardId": 1,
       "amount": 40,
       "type": "income",
       "note": "jane transfers",
@@ -36,6 +38,7 @@
     },
     {
       "id": 3,
+      "cardId": 1,
       "amount": -20,
       "type": "expense",
       "status": "successfully",
@@ -44,6 +47,7 @@
     },
     {
       "id": 4,
+      "cardId": 1,
       "amount": -20,
       "type": "expense",
       "status": "successfully",
@@ -52,6 +56,7 @@
     },
     {
       "id": 5,
+      "cardId": 1,
       "amount": 20,
       "type": "income",
       "note": "Admin transfers",
