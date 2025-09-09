@@ -7,6 +7,14 @@
       "username": "admin",
       "phone": "(+84) 0916038495",
       "name": "Jennee Kim"
+    },
+    {
+      "email": "admin2@gmail.com",
+      "id": 2,
+      "password": "$2a$10$yQt5Ee.y1ph2.FqYFFuG0.M4wpvRrhd9BgaaqGEn8D2UFGGexbnBC",
+      "username": "admin2",
+      "phone": "(+84) 0916038490",
+      "name": "La Lisa"
     }
   ],
   "cards": [
@@ -14,7 +22,15 @@
       "id": 1,
       "name": "Jennee Kim",
       "userId": "1",
-      "cardNumber": "1234567899145443",
+      "cardNumber": "1234567899876543",
+      "cardType": "Premium Account",
+      "balance": 1000
+    },
+    {
+      "id": 2,
+      "name": "La Lisa",
+      "userId": "2",
+      "cardNumber": "1234567891234567",
       "cardType": "Premium Account",
       "balance": 1000
     }
